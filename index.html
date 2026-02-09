@@ -1181,24 +1181,72 @@
 <input id="vol" type="range" min="0" max="1" step="0.01" value="0.6" />
 <button id="muteBtn" type="button">🙈</button>
 
+<audio id="bgm" preload="auto" loop></audio>
+
+<div id="audioStatus" style="
+  position:fixed; left:12px; bottom:12px; z-index:9999;
+  background:rgba(0,0,0,.75); color:#fff; padding:10px 12px;
+  border-radius:12px; font: 700 13px system-ui; max-width:min(560px,92vw);
+">
+  🎶 Audio status: initializing…
+</div>
+
+<button id="playBtn" type="button"
+  style="position:fixed; right:12px; bottom:12px; z-index:9999; padding:10px 12px; border-radius:999px; border:0; font-weight:900;">
+  ▶️ Play Song
+</button>
+
+<input id="vol" type="range" min="0" max="1" step="0.01" value="0.6"
+  style="position:fixed; right:140px; bottom:18px; z-index:9999; width:140px;" />
+
 <script>
+  const AUDIO_SRC = "./darling-song.mp3"; // change to "./docs/darling-song.mp3" or "./assets/darling-song.mp3" if needed
+
   const bgm = document.getElementById("bgm");
   const playBtn = document.getElementById("playBtn");
   const vol = document.getElementById("vol");
-  const muteBtn = document.getElementById("muteBtn");
+  const statusEl = document.getElementById("audioStatus");
 
-  function show(msg) {
-    alert(msg); // replace with your toast if you have one
-  }
+  const audioUrl = new URL(AUDIO_SRC, window.location.href).toString();
+  statusEl.textContent = `🎶 Audio status: loading… (${audioUrl})`;
 
-  // Helps on GitHub Pages subpaths too
-  bgm.src = new URL("./darling-song.mp3", window.location.href).toString();
-  bgm.volume = Number(vol.value);
+  // Pre-check via fetch so we can detect 404 / LFS pointer clearly
+  (async () => {
+    try {
+      const res = await fetch(audioUrl, { method: "GET" });
+      const ct = res.headers.get("content-type") || "";
+      const textPeek = (await res.clone().text()).slice(0, 120);
+
+      if (!res.ok) {
+        statusEl.textContent = `❌ Audio fetch failed: HTTP ${res.status}. Path is wrong or Pages not serving this folder.`;
+        console.error("FETCH FAILED:", res.status, audioUrl);
+        return;
+      }
+
+      if (textPeek.includes("git-lfs") || textPeek.includes("git-lfs.github.com/spec")) {
+        statusEl.textContent = "❌ Audio is a Git LFS pointer. GitHub Pages won't serve the real MP3. Re-upload without LFS.";
+        console.error("LFS POINTER DETECTED:", textPeek);
+        return;
+      }
+
+      statusEl.textContent = `✅ Audio file found (content-type: ${ct || "unknown"}). Ready to play.`;
+      bgm.src = audioUrl;
+      bgm.load();
+      bgm.volume = Number(vol.value);
+    } catch (e) {
+      statusEl.textContent = "❌ Fetch blocked/failed. Check console + file path.";
+      console.error("FETCH ERROR:", e, audioUrl);
+    }
+  })();
 
   bgm.addEventListener("error", () => {
-    const e = bgm.error;
-    console.error("AUDIO ERROR:", e, "SRC:", bgm.src);
-    show("Song failed to load. Check mp3 path/case or Git LFS.");
+    const code = bgm.error ? bgm.error.code : "unknown";
+    statusEl.textContent = `❌ HTMLAudio error code: ${code}. Check Network tab + file path.`;
+    console.error("AUDIO ERROR:", bgm.error, "URL:", audioUrl);
+  });
+
+  bgm.addEventListener("canplaythrough", () => {
+    statusEl.textContent = "✅ Audio can play through. Click Play 🎶";
   });
 
   playBtn.addEventListener("click", async () => {
@@ -1206,27 +1254,23 @@
       if (bgm.paused) {
         await bgm.play();
         playBtn.textContent = "⏸️ Pause Song";
+        statusEl.textContent = "🎶 Playing… 💛";
       } else {
         bgm.pause();
         playBtn.textContent = "▶️ Play Song";
+        statusEl.textContent = "⏸️ Paused.";
       }
-    } catch (err) {
-      console.error("PLAY BLOCKED:", err);
-      show("Browser blocked play. Tap the page once, then press Play.");
+    } catch (e) {
+      statusEl.textContent = "❌ Play blocked. Try tapping page once, then Play. Also check if file really loaded.";
+      console.error("PLAY ERROR:", e);
     }
   });
 
   vol.addEventListener("input", () => {
-    bgm.muted = false;
-    muteBtn.textContent = "🙈";
     bgm.volume = Number(vol.value);
   });
-
-  muteBtn.addEventListener("click", () => {
-    bgm.muted = !bgm.muted;
-    muteBtn.textContent = bgm.muted ? "🙊" : "🙈";
-  });
 </script>
+
 
 </body>
 </html>
