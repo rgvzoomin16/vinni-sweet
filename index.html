@@ -1175,5 +1175,58 @@
 
     init();
   </script>
+  <audio id="bgm" preload="auto" loop src="./darling-song.mp3"></audio>
+
+<button id="playBtn" type="button">▶️ Play Song</button>
+<input id="vol" type="range" min="0" max="1" step="0.01" value="0.6" />
+<button id="muteBtn" type="button">🙈</button>
+
+<script>
+  const bgm = document.getElementById("bgm");
+  const playBtn = document.getElementById("playBtn");
+  const vol = document.getElementById("vol");
+  const muteBtn = document.getElementById("muteBtn");
+
+  function show(msg) {
+    alert(msg); // replace with your toast if you have one
+  }
+
+  // Helps on GitHub Pages subpaths too
+  bgm.src = new URL("./darling-song.mp3", window.location.href).toString();
+  bgm.volume = Number(vol.value);
+
+  bgm.addEventListener("error", () => {
+    const e = bgm.error;
+    console.error("AUDIO ERROR:", e, "SRC:", bgm.src);
+    show("Song failed to load. Check mp3 path/case or Git LFS.");
+  });
+
+  playBtn.addEventListener("click", async () => {
+    try {
+      if (bgm.paused) {
+        await bgm.play();
+        playBtn.textContent = "⏸️ Pause Song";
+      } else {
+        bgm.pause();
+        playBtn.textContent = "▶️ Play Song";
+      }
+    } catch (err) {
+      console.error("PLAY BLOCKED:", err);
+      show("Browser blocked play. Tap the page once, then press Play.");
+    }
+  });
+
+  vol.addEventListener("input", () => {
+    bgm.muted = false;
+    muteBtn.textContent = "🙈";
+    bgm.volume = Number(vol.value);
+  });
+
+  muteBtn.addEventListener("click", () => {
+    bgm.muted = !bgm.muted;
+    muteBtn.textContent = bgm.muted ? "🙊" : "🙈";
+  });
+</script>
+
 </body>
 </html>
