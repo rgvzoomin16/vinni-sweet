@@ -1,4 +1,4 @@
-<!-- /index.html -->
+<!-- /index.html  (single file) -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,15 +11,11 @@
       --yellow:#FFD400;
       --yellow2:#FFEE7A;
       --ink:#2b2400;
-      --card:#fff8cc;
       --shadow: 0 20px 60px rgba(0,0,0,.18);
       --softshadow: 0 12px 30px rgba(0,0,0,.12);
       --pink:#ff4fa5;
       --red:#ff2d55;
-      --choco:#4b2a1a;
-      --white:#ffffff;
     }
-
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
@@ -33,7 +29,6 @@
         linear-gradient(180deg, var(--yellow) 0%, var(--yellow2) 60%, #fff 140%);
     }
 
-    /* Top graphics: glossy ribbon + floating icons */
     .top-ribbon{
       position:sticky;
       top:0;
@@ -42,7 +37,6 @@
       background: linear-gradient(90deg, rgba(255,255,255,.65), rgba(255,255,255,.25));
       border-bottom: 1px solid rgba(0,0,0,.08);
     }
-
     .nav{
       max-width:1100px;
       margin:0 auto;
@@ -52,7 +46,6 @@
       justify-content:space-between;
       gap:12px;
     }
-
     .brand{
       display:flex; align-items:center; gap:10px;
       font-weight:900;
@@ -92,12 +85,10 @@
     }
     .pill:hover{ transform: translateY(-1px); box-shadow: var(--shadow); background: rgba(255,255,255,.9); }
     .pill:active{ transform: translateY(0); }
-
     .pill.primary{
       background: linear-gradient(135deg, #ffffff, rgba(255,255,255,.7));
       border: 1px solid rgba(0,0,0,.08);
     }
-
     .pill.choco{
       background: linear-gradient(135deg, #6a3b25, #3a1f13);
       color:#fff;
@@ -115,7 +106,7 @@
     main{
       max-width:1100px;
       margin:0 auto;
-      padding:26px 16px 80px;
+      padding:26px 16px 120px; /* extra bottom space for status/toast */
     }
 
     .hero{
@@ -125,10 +116,7 @@
       gap:22px;
       align-items:stretch;
     }
-
-    @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
-    }
+    @media (max-width: 900px){ .hero{ grid-template-columns: 1fr; } }
 
     .card{
       border-radius:26px;
@@ -195,10 +183,7 @@
       margin-top:16px;
     }
 
-    .hero-right{
-      padding:0;
-    }
-
+    .hero-right{ padding:0; }
     .choco-scene{
       position:relative;
       height:100%;
@@ -208,7 +193,6 @@
         radial-gradient(420px 280px at 70% 25%, rgba(255,255,255,.9), rgba(255,255,255,0)),
         linear-gradient(135deg, rgba(255,212,0,.5), rgba(255,79,165,.25));
     }
-
     .big-heart{
       position:absolute;
       inset:auto 18px 18px auto;
@@ -221,22 +205,18 @@
       display:grid;
       place-items:center;
       font-size:64px;
-      filter: saturate(1.1);
     }
-
     .scene-title{
       font-weight:950;
       font-size:22px;
       margin:0 0 10px;
       letter-spacing:-.3px;
     }
-
     .scene-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:12px;
     }
-
     .tile{
       border-radius:18px;
       padding:14px;
@@ -245,18 +225,8 @@
       box-shadow: 0 16px 30px rgba(0,0,0,.10);
       min-height:90px;
     }
-
-    .tile h3{
-      margin:0 0 6px;
-      font-size:14px;
-      opacity:.9;
-      letter-spacing:.2px;
-    }
-    .tile p{
-      margin:0;
-      font-weight:850;
-      font-size:16px;
-    }
+    .tile h3{ margin:0 0 6px; font-size:14px; opacity:.9; }
+    .tile p{ margin:0; font-weight:850; font-size:16px; }
 
     .section{
       margin-top:22px;
@@ -276,17 +246,8 @@
       position:relative;
       overflow:hidden;
     }
-    .panel h2{
-      margin:0 0 10px;
-      font-size:18px;
-      letter-spacing:-.2px;
-    }
-    .panel .hint{
-      margin:0 0 12px;
-      opacity:.85;
-      font-weight:650;
-      line-height:1.35;
-    }
+    .panel h2{ margin:0 0 10px; font-size:18px; letter-spacing:-.2px; }
+    .panel .hint{ margin:0 0 12px; opacity:.85; font-weight:650; line-height:1.35; }
 
     .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
     .row input[type="text"], .row textarea{
@@ -301,9 +262,6 @@
     }
     textarea{ min-height:92px; resize:vertical; }
 
-    .meter{
-      width:100%;
-    }
     .meter output{
       font-weight:900;
       display:inline-block;
@@ -314,10 +272,7 @@
       margin-left:8px;
     }
 
-    .chips{
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin-top:10px;
-    }
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
     .chip{
       padding:10px 12px;
       border-radius:999px;
@@ -330,10 +285,7 @@
     }
     .chip:hover{ transform: translateY(-1px); background: rgba(255,212,0,.35); }
 
-    .list{
-      margin:0; padding:0; list-style:none;
-      display:flex; flex-direction:column; gap:10px;
-    }
+    .list{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
     .list li{
       padding:12px 12px;
       border-radius:16px;
@@ -358,7 +310,7 @@
     .toast{
       position:fixed;
       left:50%;
-      bottom:18px;
+      bottom:74px;
       transform: translateX(-50%);
       background: rgba(43,36,0,.90);
       color:#fff;
@@ -377,7 +329,6 @@
       transform: translateX(-50%) translateY(-6px);
     }
 
-    /* Floating hearts background */
     .float-layer{
       position:fixed;
       inset:0;
@@ -397,7 +348,6 @@
       to{ transform: translateY(-20vh) translateX(var(--ex)) rotate(calc(var(--r) + 80deg)); }
     }
 
-    /* Modal */
     .modal{
       position:fixed; inset:0;
       display:none;
@@ -434,7 +384,37 @@
       font-weight:950;
     }
 
-    /* Canvas for download card (hidden) */
+    /* Audio status dock */
+    .audio-dock{
+      position:fixed;
+      left:12px;
+      right:12px;
+      bottom:12px;
+      z-index:9999;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: var(--shadow);
+      border-radius: 18px;
+      padding: 10px 12px;
+      backdrop-filter: blur(10px);
+    }
+    .audio-dock .status{
+      font: 850 12.5px system-ui;
+      opacity:.95;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 56vw;
+    }
+    @media (max-width:700px){
+      .audio-dock{ flex-wrap:wrap; }
+      .audio-dock .status{ max-width: 92vw; white-space: normal; }
+    }
+
     #cardCanvas{ display:none; }
   </style>
 </head>
@@ -544,7 +524,7 @@
           <button class="pill choco" id="openChocoModal">Open Chocolate Box 🍫</button>
         </div>
         <p class="hint" style="margin-top:12px;">
-          Tip: You can customize the messages inside the code (search for <b>CHOCOLATE_MESSAGES</b>).
+          Tip: Customize messages in the code (search <b>CHOCOLATE_MESSAGES</b>).
         </p>
       </div>
 
@@ -560,7 +540,7 @@
 
       <div class="panel" style="grid-column: 1 / -1;">
         <h2>📸 Memory Lane (editable)</h2>
-        <p class="hint">These are placeholders—swap in your real memories in the code (search for <b>MEMORIES</b>).</p>
+        <p class="hint">Swap in your real memories (search <b>MEMORIES</b>).</p>
         <div class="section" style="margin-top:10px;">
           <div class="panel">
             <h2>💛 Moment #1</h2>
@@ -579,12 +559,8 @@
     </section>
   </main>
 
-  <!-- Background song (PUT YOUR FILE NEXT TO THIS HTML) -->
-  <!-- Rename your song to song.mp3 OR change src below -->
-  <audio id="bgm" preload="auto" loop>
-    <source src="darling-song.mp3" type="audio/mpeg" />
-    Your browser does not support audio.
-  </audio>
+  <!-- Audio element (no <source> needed) -->
+  <audio id="bgm" preload="auto" loop></audio>
 
   <!-- Chocolate modal -->
   <div class="modal" id="chocoModal" role="dialog" aria-modal="true" aria-labelledby="chocoTitle">
@@ -608,9 +584,7 @@
         <button class="xbtn" id="closeWish">✖</button>
       </div>
       <div class="modal-body">
-        <p class="hint" style="margin-top:0;">
-          Type a wish, then click “Add ✨”. Your wishes stay saved here.
-        </p>
+        <p class="hint" style="margin-top:0;">Type a wish, then click “Add ✨”. Your wishes stay saved here.</p>
         <div class="row">
           <input id="wishInput2" type="text" placeholder="Example: I wish to hold your hand forever 💞🤝" />
           <button class="pill primary" id="addWishBtn2">Add ✨</button>
@@ -623,16 +597,22 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <!-- Audio dock (shows exact issue on GitHub Pages: 404/LFS/etc.) -->
+  <div class="audio-dock" role="status" aria-live="polite">
+    <div class="status" id="audioStatus">🎶 Audio status: initializing…</div>
+    <!-- reuse the top controls already, so no extra buttons here -->
+  </div>
+
   <canvas id="cardCanvas" width="1080" height="1350"></canvas>
 
   <script>
-    /**
-     * Setup notes:
-     * - Put your song file next to this HTML and name it "song.mp3"
-     *   (or change AUDIO_SRC below).
-     */
     const LOVER_NAME = "Vinni";
-    const AUDIO_SRC = "song.mp3";
+
+    // ✅ IMPORTANT:
+    // - Put darling-song.mp3 in the SAME folder as this index.html
+    // - Filename must match EXACTLY (case-sensitive)
+    // - If your MP3 is in a folder, change to: "./assets/darling-song.mp3"
+    const AUDIO_SRC = "./darling-song.mp3";
 
     const MEMORIES = [
       "That time your smile made my whole day brighter 💛✨",
@@ -658,6 +638,7 @@
     const playText = document.getElementById("playText");
     const vol = document.getElementById("vol");
     const muteBtn = document.getElementById("muteBtn");
+    const audioStatus = document.getElementById("audioStatus");
 
     const loveRainBtn = document.getElementById("loveRainBtn");
     const confettiBtn = document.getElementById("confettiBtn");
@@ -706,40 +687,6 @@
 
     function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
 
-    function safeInitAudio(){
-      const source = bgm.querySelector("source");
-      if (source && source.getAttribute("src") !== AUDIO_SRC){
-        source.setAttribute("src", AUDIO_SRC);
-        bgm.load();
-      }
-      bgm.volume = Number(vol.value);
-    }
-
-    async function togglePlay(){
-      safeInitAudio();
-      if (bgm.paused){
-        try{
-          await bgm.play();
-          playIcon.textContent = "⏸️";
-          playText.textContent = "Pause Song";
-          showToast("Playing your love song 🎶💛");
-        }catch{
-          showToast("Tap once anywhere, then try Play 🎶 (browser rule)");
-        }
-      }else{
-        bgm.pause();
-        playIcon.textContent = "▶️";
-        playText.textContent = "Play Song";
-        showToast("Paused 💛");
-      }
-    }
-
-    function setMute(){
-      bgm.muted = !bgm.muted;
-      muteBtn.textContent = bgm.muted ? "🙊" : "🙈";
-      showToast(bgm.muted ? "Muted 🙊" : "Unmuted 🙈");
-    }
-
     function makeFloatingHearts(count = 18){
       for (let i=0;i<count;i++){
         const el = document.createElement("div");
@@ -759,7 +706,6 @@
     }
 
     function burstConfetti(){
-      // Simple heart confetti burst using DOM
       const burst = 80;
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 3;
@@ -807,10 +753,9 @@
     }
 
     function nextChocolateDayCountdown(){
-      // Chocolate Day: Feb 9 (commonly). Uses local time.
       const now = new Date();
       const year = now.getFullYear();
-      const targetThisYear = new Date(year, 1, 9, 0, 0, 0); // Feb=1
+      const targetThisYear = new Date(year, 1, 9, 0, 0, 0); // Feb 9
       const target = now <= targetThisYear ? targetThisYear : new Date(year+1, 1, 9, 0, 0, 0);
       const ms = target - now;
 
@@ -827,29 +772,21 @@
       const m = Number(meter.value);
       meterOut.value = `${m}%`;
       meterOut.textContent = `${m}%`;
-      const lvl = m >= 95 ? "∞ / 10" : `${Math.ceil(m/10)} / 10`;
-      loveLevel.textContent = lvl;
+      loveLevel.textContent = m >= 95 ? "∞ / 10" : `${Math.ceil(m/10)} / 10`;
       const chocolates = clamp(Math.round(m/8), 1, 99);
       chocoCount.textContent = `${chocolates} kisses-worth`;
     }
 
     function typewriter(lines){
       let line = 0, idx = 0;
-      let current = "";
       const speed = 30;
 
       function tick(){
         const text = lines[line];
-        current = text.slice(0, idx++);
-        typeText.textContent = current;
-
-        if (idx <= text.length){
-          setTimeout(tick, speed);
-          return;
-        }
+        typeText.textContent = text.slice(0, idx++);
+        if (idx <= text.length){ setTimeout(tick, speed); return; }
 
         setTimeout(() => {
-          // backspace a bit then next line
           const back = () => {
             if (idx > 0){
               idx -= 2;
@@ -873,9 +810,7 @@
       try{
         const raw = localStorage.getItem(WISH_KEY);
         return raw ? JSON.parse(raw) : [];
-      }catch{
-        return [];
-      }
+      }catch{ return []; }
     }
 
     function saveWishes(wishes){
@@ -905,7 +840,6 @@
           btn.title = "Delete";
           btn.addEventListener("click", () => {
             const wishes2 = loadWishes();
-            // idxFromEnd maps to original index
             const originalIndex = wishes2.length - 1 - idxFromEnd;
             wishes2.splice(originalIndex, 1);
             saveWishes(wishes2);
@@ -932,10 +866,7 @@
 
     function addWish(text){
       const t = (text || "").trim();
-      if (!t){
-        showToast("Write a wish first 💛");
-        return;
-      }
+      if (!t){ showToast("Write a wish first 💛"); return; }
       const wishes = loadWishes();
       wishes.push({ text: t, ts: Date.now() });
       saveWishes(wishes);
@@ -943,12 +874,8 @@
       showToast("Wish saved ✨💛");
     }
 
-    function openModal(el){
-      el.classList.add("show");
-    }
-    function closeModal(el){
-      el.classList.remove("show");
-    }
+    function openModal(el){ el.classList.add("show"); }
+    function closeModal(el){ el.classList.remove("show"); }
 
     function setupChocolateGrid(){
       chocoGrid.innerHTML = "";
@@ -978,85 +905,14 @@
           showToast("Shared 💛");
           return;
         }
-      }catch{
-        // ignore
-      }
+      }catch{}
 
       try{
         await navigator.clipboard.writeText(`${text}\n${url}`);
         showToast("Link copied 📋💛");
       }catch{
-        showToast("Copy failed—your browser blocked it 💛");
+        showToast("Copy failed 💛");
       }
-    }
-
-    function downloadLoveCard(){
-      const canvas = document.getElementById("cardCanvas");
-      const ctx = canvas.getContext("2d");
-
-      // Background
-      const grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      grd.addColorStop(0, "#FFD400");
-      grd.addColorStop(0.6, "#FFEE7A");
-      grd.addColorStop(1, "#FFFFFF");
-      ctx.fillStyle = grd;
-      ctx.fillRect(0,0,canvas.width,canvas.height);
-
-      // Top glow
-      ctx.fillStyle = "rgba(255,255,255,0.75)";
-      ctx.beginPath();
-      ctx.ellipse(canvas.width*0.25, canvas.height*0.18, 420, 260, 0, 0, Math.PI*2);
-      ctx.fill();
-
-      // Card
-      const pad = 80;
-      const x = pad, y = 220, w = canvas.width - pad*2, h = 880;
-      roundRect(ctx, x, y, w, h, 46);
-      ctx.fillStyle = "rgba(255,255,255,0.78)";
-      ctx.fill();
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = "rgba(0,0,0,0.12)";
-      ctx.stroke();
-
-      // Title
-      ctx.fillStyle = "#2b2400";
-      ctx.font = "900 64px system-ui, -apple-system, Segoe UI, Roboto";
-      ctx.fillText("Happy Chocolate Day", x+60, y+120);
-
-      // Name
-      ctx.font = "950 86px system-ui, -apple-system, Segoe UI, Roboto";
-      ctx.fillText(LOVER_NAME + " 💛🍫", x+60, y+220);
-
-      // Message
-      ctx.font = "800 44px system-ui, -apple-system, Segoe UI, Roboto";
-      wrapText(ctx, "You are my sweetest forever 💞\nLove you loads 😘💛", x+60, y+320, w-120, 56);
-
-      // Big heart sticker
-      const hx = x + w - 250, hy = y + h - 270;
-      ctx.save();
-      ctx.translate(hx, hy);
-      ctx.rotate(0.18);
-      roundRect(ctx, -160, -160, 320, 320, 70);
-      ctx.fillStyle = "#ff2d55";
-      ctx.globalAlpha = 0.92;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-      ctx.font = "900 140px system-ui, -apple-system, Segoe UI, Roboto";
-      ctx.fillStyle = "#fff";
-      ctx.fillText("💘", -82, 55);
-      ctx.restore();
-
-      // Footer
-      ctx.font = "850 34px system-ui, -apple-system, Segoe UI, Roboto";
-      ctx.fillStyle = "rgba(43,36,0,0.85)";
-      ctx.fillText("Made with love emojis 💞✨ and yellow vibes 💛", x+60, y+h-60);
-
-      const a = document.createElement("a");
-      a.download = `Chocolate-Day-${LOVER_NAME}.png`;
-      a.href = canvas.toDataURL("image/png");
-      a.click();
-
-      showToast("Love card downloaded 🖼️💛");
     }
 
     function roundRect(ctx, x, y, w, h, r){
@@ -1073,7 +929,6 @@
     function wrapText(ctx, text, x, y, maxWidth, lineHeight){
       const lines = String(text).split("\n");
       let yy = y;
-
       for (const ln of lines){
         const words = ln.split(" ");
         let line = "";
@@ -1092,23 +947,157 @@
       }
     }
 
+    function downloadLoveCard(){
+      const canvas = document.getElementById("cardCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      grd.addColorStop(0, "#FFD400");
+      grd.addColorStop(0.6, "#FFEE7A");
+      grd.addColorStop(1, "#FFFFFF");
+      ctx.fillStyle = grd;
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+
+      ctx.fillStyle = "rgba(255,255,255,0.75)";
+      ctx.beginPath();
+      ctx.ellipse(canvas.width*0.25, canvas.height*0.18, 420, 260, 0, 0, Math.PI*2);
+      ctx.fill();
+
+      const pad = 80;
+      const x = pad, y = 220, w = canvas.width - pad*2, h = 880;
+      roundRect(ctx, x, y, w, h, 46);
+      ctx.fillStyle = "rgba(255,255,255,0.78)";
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "rgba(0,0,0,0.12)";
+      ctx.stroke();
+
+      ctx.fillStyle = "#2b2400";
+      ctx.font = "900 64px system-ui, -apple-system, Segoe UI, Roboto";
+      ctx.fillText("Happy Chocolate Day", x+60, y+120);
+
+      ctx.font = "950 86px system-ui, -apple-system, Segoe UI, Roboto";
+      ctx.fillText(LOVER_NAME + " 💛🍫", x+60, y+220);
+
+      ctx.font = "800 44px system-ui, -apple-system, Segoe UI, Roboto";
+      wrapText(ctx, "You are my sweetest forever 💞\nLove you loads 😘💛", x+60, y+320, w-120, 56);
+
+      const hx = x + w - 250, hy = y + h - 270;
+      ctx.save();
+      ctx.translate(hx, hy);
+      ctx.rotate(0.18);
+      roundRect(ctx, -160, -160, 320, 320, 70);
+      ctx.fillStyle = "#ff2d55";
+      ctx.globalAlpha = 0.92;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.font = "900 140px system-ui, -apple-system, Segoe UI, Roboto";
+      ctx.fillStyle = "#fff";
+      ctx.fillText("💘", -82, 55);
+      ctx.restore();
+
+      ctx.font = "850 34px system-ui, -apple-system, Segoe UI, Roboto";
+      ctx.fillStyle = "rgba(43,36,0,0.85)";
+      ctx.fillText("Made with love emojis 💞✨ and yellow vibes 💛", x+60, y+h-60);
+
+      const a = document.createElement("a");
+      a.download = `Chocolate-Day-${LOVER_NAME}.png`;
+      a.href = canvas.toDataURL("image/png");
+      a.click();
+
+      showToast("Love card downloaded 🖼️💛");
+    }
+
+    // ====== AUDIO: GitHub Pages diagnosis + reliable load ======
+    function resolveAudioUrl(){
+      return new URL(AUDIO_SRC, window.location.href).toString();
+    }
+
+    async function precheckAudio(){
+      const url = resolveAudioUrl();
+      audioStatus.textContent = `🎶 Audio status: checking… (${url})`;
+
+      try{
+        const res = await fetch(url, { method:"GET" });
+        if (!res.ok){
+          audioStatus.textContent = `❌ Audio HTTP ${res.status}. Fix path/folder or Pages source (/docs vs root).`;
+          console.error("AUDIO FETCH:", res.status, url);
+          return { ok:false, url };
+        }
+
+        const peek = (await res.clone().text()).slice(0, 140);
+        if (peek.includes("git-lfs") || peek.includes("git-lfs.github.com/spec")){
+          audioStatus.textContent = "❌ Audio is Git LFS pointer. Remove LFS + re-upload MP3 normally.";
+          console.error("LFS POINTER:", peek);
+          return { ok:false, url };
+        }
+
+        audioStatus.textContent = "✅ Audio file found. Click Play 🎶💛";
+        bgm.src = url;
+        bgm.load();
+        return { ok:true, url };
+      }catch(e){
+        audioStatus.textContent = "❌ Audio fetch failed. Check console + file path.";
+        console.error("AUDIO FETCH ERROR:", e);
+        return { ok:false, url };
+      }
+    }
+
+    async function togglePlay(){
+      if (!bgm.src){
+        await precheckAudio();
+      }
+
+      if (!bgm.src){
+        showToast("Song not loaded (path/404/LFS). See audio status bar 💛");
+        return;
+      }
+
+      if (bgm.paused){
+        try{
+          await bgm.play();
+          playIcon.textContent = "⏸️";
+          playText.textContent = "Pause Song";
+          audioStatus.textContent = "🎶 Playing… 💛";
+          showToast("Playing your love song 🎶💛");
+        }catch(e){
+          console.error("PLAY ERROR:", e);
+          audioStatus.textContent = "❌ Play blocked. Tap page once, then Play. (Also ensure file loads)";
+          showToast("Play blocked. Tap once anywhere, then Play 💛");
+        }
+      }else{
+        bgm.pause();
+        playIcon.textContent = "▶️";
+        playText.textContent = "Play Song";
+        audioStatus.textContent = "⏸️ Paused.";
+        showToast("Paused 💛");
+      }
+    }
+
+    function setMute(){
+      bgm.muted = !bgm.muted;
+      muteBtn.textContent = bgm.muted ? "🙊" : "🙈";
+      showToast(bgm.muted ? "Muted 🙊" : "Unmuted 🙈");
+    }
+
+    bgm.addEventListener("error", () => {
+      const code = bgm.error ? bgm.error.code : "unknown";
+      audioStatus.textContent = `❌ HTMLAudio error code: ${code}. (Check file path/case)`;
+      console.error("AUDIO ELEMENT ERROR:", bgm.error, "SRC:", bgm.src);
+    });
+
+    bgm.addEventListener("canplaythrough", () => {
+      if (!bgm.paused) return;
+      audioStatus.textContent = "✅ Ready to play 🎶💛";
+    });
+    // ====== /AUDIO ======
+
     function init(){
       nameTop.textContent = LOVER_NAME;
       m1.textContent = MEMORIES[0];
       m2.textContent = MEMORIES[1];
       m3.textContent = MEMORIES[2];
 
-      safeInitAudio();
-
-      // Browser autoplay rule workaround: arm play on first interaction
-      const arm = () => {
-        document.removeEventListener("pointerdown", arm);
-        // no forced play; just ready the element
-        bgm.load();
-      };
-      document.addEventListener("pointerdown", arm, { once:true });
-
-      // Typing lines
       typewriter([
         `Happy Chocolate Day, ${LOVER_NAME} 💛🍫`,
         `You’re my sunshine and my sweet chocolate 🌞🍫`,
@@ -1116,21 +1105,22 @@
         `Forever yours 💍💛`
       ]);
 
-      // Floating hearts background
       makeFloatingHearts(22);
       setInterval(() => makeFloatingHearts(8), 2600);
 
-      // Dashboard / meter
       meter.addEventListener("input", updateLoveDashboard);
       updateLoveDashboard();
 
-      // Countdown
       nextChocolateDayCountdown();
       setInterval(nextChocolateDayCountdown, 1000);
 
-      // Buttons
+      // Button actions
       playBtn.addEventListener("click", togglePlay);
-      vol.addEventListener("input", () => { bgm.volume = Number(vol.value); bgm.muted = false; muteBtn.textContent = "🙈"; });
+      vol.addEventListener("input", () => {
+        bgm.muted = false;
+        muteBtn.textContent = "🙈";
+        bgm.volume = Number(vol.value);
+      });
       muteBtn.addEventListener("click", setMute);
 
       loveRainBtn.addEventListener("click", () => { makeFloatingHearts(40); showToast("Love shower activated 💛💛💛"); });
@@ -1140,17 +1130,14 @@
       shareBtn.addEventListener("click", sharePage);
       downloadCardBtn.addEventListener("click", downloadLoveCard);
 
-      // Chips say something
       document.querySelectorAll(".chip").forEach(chip => {
         chip.addEventListener("click", () => showToast(chip.dataset.say));
       });
 
-      // Wishes
       renderWishes();
       addWishBtn.addEventListener("click", () => { addWish(wishInput.value); wishInput.value=""; });
       wishInput.addEventListener("keydown", (e) => { if (e.key === "Enter"){ addWish(wishInput.value); wishInput.value=""; }});
 
-      // Wish modal
       wishOpenBtn.addEventListener("click", () => openModal(wishModal));
       closeWish.addEventListener("click", () => closeModal(wishModal));
       wishModal.addEventListener("click", (e) => { if (e.target === wishModal) closeModal(wishModal); });
@@ -1158,119 +1145,23 @@
       addWishBtn2.addEventListener("click", () => { addWish(wishInput2.value); wishInput2.value=""; });
       wishInput2.addEventListener("keydown", (e) => { if (e.key === "Enter"){ addWish(wishInput2.value); wishInput2.value=""; }});
 
-      // Chocolate modal
       setupChocolateGrid();
       openChocoModal.addEventListener("click", () => openModal(chocoModal));
       closeChoco.addEventListener("click", () => closeModal(chocoModal));
       chocoModal.addEventListener("click", (e) => { if (e.target === chocoModal) closeModal(chocoModal); });
 
-      // Cute random updates
       setInterval(() => {
         const moods = ["Golden & Cozy 💛", "Sweet & Sparkly ✨", "Kiss-ready 😘", "Hug-hungry 🤗", "Chocolatey 🍫"];
         document.getElementById("mood").textContent = moods[Math.floor(Math.random()*moods.length)];
       }, 6500);
+
+      // Pre-check audio immediately so you SEE the problem on GitHub Pages
+      precheckAudio();
 
       showToast(`Welcome, ${LOVER_NAME} 💛🍫`);
     }
 
     init();
   </script>
-  <audio id="bgm" preload="auto" loop src="./darling-song.mp3"></audio>
-
-<button id="playBtn" type="button">▶️ Play Song</button>
-<input id="vol" type="range" min="0" max="1" step="0.01" value="0.6" />
-<button id="muteBtn" type="button">🙈</button>
-
-<audio id="bgm" preload="auto" loop></audio>
-
-<div id="audioStatus" style="
-  position:fixed; left:12px; bottom:12px; z-index:9999;
-  background:rgba(0,0,0,.75); color:#fff; padding:10px 12px;
-  border-radius:12px; font: 700 13px system-ui; max-width:min(560px,92vw);
-">
-  🎶 Audio status: initializing…
-</div>
-
-<button id="playBtn" type="button"
-  style="position:fixed; right:12px; bottom:12px; z-index:9999; padding:10px 12px; border-radius:999px; border:0; font-weight:900;">
-  ▶️ Play Song
-</button>
-
-<input id="vol" type="range" min="0" max="1" step="0.01" value="0.6"
-  style="position:fixed; right:140px; bottom:18px; z-index:9999; width:140px;" />
-
-<script>
-  const AUDIO_SRC = "./darling-song.mp3"; // change to "./docs/darling-song.mp3" or "./assets/darling-song.mp3" if needed
-
-  const bgm = document.getElementById("bgm");
-  const playBtn = document.getElementById("playBtn");
-  const vol = document.getElementById("vol");
-  const statusEl = document.getElementById("audioStatus");
-
-  const audioUrl = new URL(AUDIO_SRC, window.location.href).toString();
-  statusEl.textContent = `🎶 Audio status: loading… (${audioUrl})`;
-
-  // Pre-check via fetch so we can detect 404 / LFS pointer clearly
-  (async () => {
-    try {
-      const res = await fetch(audioUrl, { method: "GET" });
-      const ct = res.headers.get("content-type") || "";
-      const textPeek = (await res.clone().text()).slice(0, 120);
-
-      if (!res.ok) {
-        statusEl.textContent = `❌ Audio fetch failed: HTTP ${res.status}. Path is wrong or Pages not serving this folder.`;
-        console.error("FETCH FAILED:", res.status, audioUrl);
-        return;
-      }
-
-      if (textPeek.includes("git-lfs") || textPeek.includes("git-lfs.github.com/spec")) {
-        statusEl.textContent = "❌ Audio is a Git LFS pointer. GitHub Pages won't serve the real MP3. Re-upload without LFS.";
-        console.error("LFS POINTER DETECTED:", textPeek);
-        return;
-      }
-
-      statusEl.textContent = `✅ Audio file found (content-type: ${ct || "unknown"}). Ready to play.`;
-      bgm.src = audioUrl;
-      bgm.load();
-      bgm.volume = Number(vol.value);
-    } catch (e) {
-      statusEl.textContent = "❌ Fetch blocked/failed. Check console + file path.";
-      console.error("FETCH ERROR:", e, audioUrl);
-    }
-  })();
-
-  bgm.addEventListener("error", () => {
-    const code = bgm.error ? bgm.error.code : "unknown";
-    statusEl.textContent = `❌ HTMLAudio error code: ${code}. Check Network tab + file path.`;
-    console.error("AUDIO ERROR:", bgm.error, "URL:", audioUrl);
-  });
-
-  bgm.addEventListener("canplaythrough", () => {
-    statusEl.textContent = "✅ Audio can play through. Click Play 🎶";
-  });
-
-  playBtn.addEventListener("click", async () => {
-    try {
-      if (bgm.paused) {
-        await bgm.play();
-        playBtn.textContent = "⏸️ Pause Song";
-        statusEl.textContent = "🎶 Playing… 💛";
-      } else {
-        bgm.pause();
-        playBtn.textContent = "▶️ Play Song";
-        statusEl.textContent = "⏸️ Paused.";
-      }
-    } catch (e) {
-      statusEl.textContent = "❌ Play blocked. Try tapping page once, then Play. Also check if file really loaded.";
-      console.error("PLAY ERROR:", e);
-    }
-  });
-
-  vol.addEventListener("input", () => {
-    bgm.volume = Number(vol.value);
-  });
-</script>
-
-
 </body>
 </html>
