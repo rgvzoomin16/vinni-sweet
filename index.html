@@ -1,0 +1,1179 @@
+<!-- /index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Chocolate Day, Vinni 💛🍫</title>
+  <meta name="theme-color" content="#FFD400" />
+  <style>
+    :root{
+      --yellow:#FFD400;
+      --yellow2:#FFEE7A;
+      --ink:#2b2400;
+      --card:#fff8cc;
+      --shadow: 0 20px 60px rgba(0,0,0,.18);
+      --softshadow: 0 12px 30px rgba(0,0,0,.12);
+      --pink:#ff4fa5;
+      --red:#ff2d55;
+      --choco:#4b2a1a;
+      --white:#ffffff;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      overflow-x:hidden;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(255,255,255,.75), rgba(255,255,255,0)),
+        radial-gradient(900px 700px at 90% 20%, rgba(255,255,255,.65), rgba(255,255,255,0)),
+        linear-gradient(180deg, var(--yellow) 0%, var(--yellow2) 60%, #fff 140%);
+    }
+
+    /* Top graphics: glossy ribbon + floating icons */
+    .top-ribbon{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(90deg, rgba(255,255,255,.65), rgba(255,255,255,.25));
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    .nav{
+      max-width:1100px;
+      margin:0 auto;
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900;
+      letter-spacing:.3px;
+    }
+    .brand .logo{
+      width:40px; height:40px; border-radius:14px;
+      background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.2)),
+                  linear-gradient(135deg, var(--pink), var(--red));
+      box-shadow: 0 14px 28px rgba(255,45,85,.25);
+      display:grid; place-items:center;
+      transform: rotate(-8deg);
+    }
+    .brand .logo span{ font-size:20px; filter: drop-shadow(0 6px 8px rgba(0,0,0,.15)); }
+    .brand small{ display:block; font-weight:700; opacity:.9; }
+
+    .nav-actions{
+      display:flex; flex-wrap:wrap;
+      gap:10px; align-items:center; justify-content:flex-end;
+    }
+
+    .pill{
+      border:none;
+      cursor:pointer;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.75);
+      color:var(--ink);
+      box-shadow: var(--softshadow);
+      font-weight:800;
+      letter-spacing:.2px;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      user-select:none;
+    }
+    .pill:hover{ transform: translateY(-1px); box-shadow: var(--shadow); background: rgba(255,255,255,.9); }
+    .pill:active{ transform: translateY(0); }
+
+    .pill.primary{
+      background: linear-gradient(135deg, #ffffff, rgba(255,255,255,.7));
+      border: 1px solid rgba(0,0,0,.08);
+    }
+
+    .pill.choco{
+      background: linear-gradient(135deg, #6a3b25, #3a1f13);
+      color:#fff;
+    }
+
+    .volume{
+      display:flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.75);
+      box-shadow: var(--softshadow);
+    }
+    .volume input[type="range"]{ width:110px; }
+
+    main{
+      max-width:1100px;
+      margin:0 auto;
+      padding:26px 16px 80px;
+    }
+
+    .hero{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius:26px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-left{
+      padding:26px;
+      background:
+        radial-gradient(700px 420px at 10% 10%, rgba(255,255,255,.95), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(255,255,255,.75), rgba(255,255,255,.4));
+    }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,212,0,.35);
+      border: 1px dashed rgba(75,42,26,.35);
+      font-weight:900;
+    }
+
+    h1{
+      margin:12px 0 6px;
+      font-size: clamp(30px, 4vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+
+    .subtitle{
+      font-size: clamp(14px, 2vw, 18px);
+      opacity:.92;
+      margin:0 0 16px;
+      font-weight:700;
+    }
+
+    .typing{
+      font-size: clamp(16px, 2.2vw, 20px);
+      background: rgba(255,238,122,.45);
+      padding:14px 14px;
+      border-radius:18px;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 14px 28px rgba(0,0,0,.08);
+      font-weight:800;
+    }
+    .typing .cursor{
+      display:inline-block;
+      width:10px; height:1.1em;
+      background: rgba(43,36,0,.6);
+      margin-left:6px;
+      transform: translateY(3px);
+      animation: blink .9s infinite;
+    }
+    @keyframes blink{ 0%,49%{opacity:1} 50%,100%{opacity:0} }
+
+    .mini-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .hero-right{
+      padding:0;
+    }
+
+    .choco-scene{
+      position:relative;
+      height:100%;
+      min-height:320px;
+      padding:24px;
+      background:
+        radial-gradient(420px 280px at 70% 25%, rgba(255,255,255,.9), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(255,212,0,.5), rgba(255,79,165,.25));
+    }
+
+    .big-heart{
+      position:absolute;
+      inset:auto 18px 18px auto;
+      width:150px; height:150px;
+      background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.2)),
+                  linear-gradient(135deg, #ff4fa5, #ff2d55);
+      border-radius: 36px;
+      transform: rotate(12deg);
+      box-shadow: 0 30px 70px rgba(255,45,85,.35);
+      display:grid;
+      place-items:center;
+      font-size:64px;
+      filter: saturate(1.1);
+    }
+
+    .scene-title{
+      font-weight:950;
+      font-size:22px;
+      margin:0 0 10px;
+      letter-spacing:-.3px;
+    }
+
+    .scene-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+
+    .tile{
+      border-radius:18px;
+      padding:14px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      min-height:90px;
+    }
+
+    .tile h3{
+      margin:0 0 6px;
+      font-size:14px;
+      opacity:.9;
+      letter-spacing:.2px;
+    }
+    .tile p{
+      margin:0;
+      font-weight:850;
+      font-size:16px;
+    }
+
+    .section{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 1000px){ .section{ grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 700px){ .section{ grid-template-columns: 1fr; } }
+
+    .panel{
+      padding:18px;
+      border-radius:22px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow: var(--softshadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .panel h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+    .panel .hint{
+      margin:0 0 12px;
+      opacity:.85;
+      font-weight:650;
+      line-height:1.35;
+    }
+
+    .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .row input[type="text"], .row textarea{
+      flex:1;
+      min-width:220px;
+      border-radius:16px;
+      border:1px solid rgba(0,0,0,.14);
+      padding:12px 12px;
+      font: inherit;
+      outline:none;
+      background: rgba(255,255,255,.85);
+    }
+    textarea{ min-height:92px; resize:vertical; }
+
+    .meter{
+      width:100%;
+    }
+    .meter output{
+      font-weight:900;
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,238,122,.55);
+      border:1px solid rgba(0,0,0,.08);
+      margin-left:8px;
+    }
+
+    .chips{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:10px;
+    }
+    .chip{
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,212,0,.25);
+      border:1px solid rgba(0,0,0,.10);
+      cursor:pointer;
+      font-weight:850;
+      transition: transform .15s ease, background .15s ease;
+      user-select:none;
+    }
+    .chip:hover{ transform: translateY(-1px); background: rgba(255,212,0,.35); }
+
+    .list{
+      margin:0; padding:0; list-style:none;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .list li{
+      padding:12px 12px;
+      border-radius:16px;
+      background: rgba(255,255,255,.75);
+      border:1px solid rgba(0,0,0,.08);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .list li strong{ display:block; }
+    .list li small{ opacity:.75; font-weight:700; }
+    .list button{
+      border:none;
+      border-radius:12px;
+      padding:8px 10px;
+      cursor:pointer;
+      background: rgba(255,79,165,.18);
+      font-weight:900;
+    }
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform: translateX(-50%);
+      background: rgba(43,36,0,.90);
+      color:#fff;
+      padding:12px 14px;
+      border-radius:16px;
+      box-shadow: var(--shadow);
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+      z-index:200;
+      max-width:min(560px, 92vw);
+      font-weight:800;
+    }
+    .toast.show{
+      opacity:1;
+      transform: translateX(-50%) translateY(-6px);
+    }
+
+    /* Floating hearts background */
+    .float-layer{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      overflow:hidden;
+    }
+    .float{
+      position:absolute;
+      opacity:.35;
+      filter: drop-shadow(0 14px 20px rgba(0,0,0,.10));
+      animation: drift linear infinite;
+      user-select:none;
+    }
+    @keyframes drift{
+      from{ transform: translateY(110vh) translateX(var(--sx)) rotate(var(--r)); }
+      to{ transform: translateY(-20vh) translateX(var(--ex)) rotate(calc(var(--r) + 80deg)); }
+    }
+
+    /* Modal */
+    .modal{
+      position:fixed; inset:0;
+      display:none;
+      align-items:center; justify-content:center;
+      background: rgba(0,0,0,.35);
+      z-index:250;
+      padding:14px;
+    }
+    .modal.show{ display:flex; }
+    .modal-card{
+      width:min(720px, 96vw);
+      border-radius:26px;
+      background: rgba(255,255,255,.88);
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modal-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 16px;
+      border-bottom:1px solid rgba(0,0,0,.08);
+      background: linear-gradient(90deg, rgba(255,212,0,.35), rgba(255,79,165,.16));
+    }
+    .modal-head h3{ margin:0; font-size:16px; font-weight:950; }
+    .modal-body{ padding:16px; }
+    .xbtn{
+      border:none;
+      background: rgba(0,0,0,.08);
+      border-radius:12px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-weight:950;
+    }
+
+    /* Canvas for download card (hidden) */
+    #cardCanvas{ display:none; }
+  </style>
+</head>
+
+<body>
+  <div class="float-layer" id="floatLayer" aria-hidden="true"></div>
+
+  <header class="top-ribbon">
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><span>💛</span></div>
+        <div>
+          <div>Chocolate Day for <span id="nameTop">Vinni</span> 🍫</div>
+          <small>Designed with love emojis 💞✨</small>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button class="pill choco" id="playBtn" title="Play/Pause song">
+          <span id="playIcon">▶️</span><span id="playText">Play Song</span>
+        </button>
+
+        <div class="volume" title="Volume">
+          <span aria-hidden="true">🔊</span>
+          <input id="vol" type="range" min="0" max="1" step="0.01" value="0.6" />
+          <button class="pill primary" id="muteBtn" style="padding:8px 10px;">🙈</button>
+        </div>
+
+        <button class="pill primary" id="loveRainBtn">💛 Shower Love</button>
+        <button class="pill primary" id="confettiBtn">💖 Confetti</button>
+        <button class="pill primary" id="surpriseBtn">🎁 Surprise</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="card hero-left">
+        <div class="badge">🍫 Happy Chocolate Day • 💛 Yellow Love Theme • 💍 For Vinni</div>
+
+        <h1>
+          Vinni 💛🍫<br/>
+          You are my sweetest forever 💞
+        </h1>
+        <p class="subtitle" id="subtitle">
+          A tiny website full of kisses 😘, hugs 🤗, and chocolate-y love 🍫✨
+        </p>
+
+        <div class="typing" aria-live="polite">
+          <span id="typeText"></span><span class="cursor" aria-hidden="true"></span>
+        </div>
+
+        <div class="mini-actions">
+          <button class="pill primary" id="wishOpenBtn">🫶 Make a Wish</button>
+          <button class="pill primary" id="downloadCardBtn">🖼️ Download Love Card</button>
+          <button class="pill primary" id="shareBtn">📲 Share</button>
+        </div>
+      </div>
+
+      <div class="card hero-right">
+        <div class="choco-scene">
+          <h2 class="scene-title">Today’s Love Dashboard 💛</h2>
+          <div class="scene-grid">
+            <div class="tile">
+              <h3>💖 Love Level</h3>
+              <p id="loveLevel">∞ / 10</p>
+            </div>
+            <div class="tile">
+              <h3>🍫 Chocolate Count</h3>
+              <p id="chocoCount">12 kisses-worth</p>
+            </div>
+            <div class="tile">
+              <h3>⏳ Countdown</h3>
+              <p id="countdown">…</p>
+            </div>
+            <div class="tile">
+              <h3>✨ Mood</h3>
+              <p id="mood">Golden & Cozy 💛</p>
+            </div>
+          </div>
+
+          <div class="big-heart" aria-hidden="true">💘</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>💛 Love Meter</h2>
+        <p class="hint">Drag it. It always ends at “too much love” 😘</p>
+        <div class="meter">
+          <input id="meter" type="range" min="0" max="100" value="95" />
+          <output id="meterOut">95%</output>
+        </div>
+        <div class="chips">
+          <div class="chip" data-say="You’re my sunshine, Vinni 💛🌞">💛 Sunshine</div>
+          <div class="chip" data-say="One chocolate for you 🍫 + one kiss for you 😘">🍫 + 😘</div>
+          <div class="chip" data-say="I choose you. Always. 💞">💍 Always</div>
+          <div class="chip" data-say="Hug delivery incoming 🤗💛">🤗 Hug</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>🍫 Pick a Chocolate</h2>
+        <p class="hint">Tap a box for a sweet message 💌</p>
+        <div class="row">
+          <button class="pill choco" id="openChocoModal">Open Chocolate Box 🍫</button>
+        </div>
+        <p class="hint" style="margin-top:12px;">
+          Tip: You can customize the messages inside the code (search for <b>CHOCOLATE_MESSAGES</b>).
+        </p>
+      </div>
+
+      <div class="panel">
+        <h2>🫶 Wish Jar</h2>
+        <p class="hint">Write a wish for Vinni. It saves on this device 💛</p>
+        <div class="row">
+          <input id="wishInput" type="text" placeholder="Example: I wish we share chocolates together 🍫💞" />
+          <button class="pill primary" id="addWishBtn">Add ✨</button>
+        </div>
+        <ul class="list" id="wishList" style="margin-top:12px;"></ul>
+      </div>
+
+      <div class="panel" style="grid-column: 1 / -1;">
+        <h2>📸 Memory Lane (editable)</h2>
+        <p class="hint">These are placeholders—swap in your real memories in the code (search for <b>MEMORIES</b>).</p>
+        <div class="section" style="margin-top:10px;">
+          <div class="panel">
+            <h2>💛 Moment #1</h2>
+            <p class="hint" id="m1"></p>
+          </div>
+          <div class="panel">
+            <h2>🍫 Moment #2</h2>
+            <p class="hint" id="m2"></p>
+          </div>
+          <div class="panel">
+            <h2>💞 Moment #3</h2>
+            <p class="hint" id="m3"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Background song (PUT YOUR FILE NEXT TO THIS HTML) -->
+  <!-- Rename your song to song.mp3 OR change src below -->
+  <audio id="bgm" preload="auto" loop>
+    <source src="song.mp3" type="audio/mpeg" />
+    Your browser does not support audio.
+  </audio>
+
+  <!-- Chocolate modal -->
+  <div class="modal" id="chocoModal" role="dialog" aria-modal="true" aria-labelledby="chocoTitle">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="chocoTitle">🍫 Chocolate Box for Vinni 💛</h3>
+        <button class="xbtn" id="closeChoco">✖</button>
+      </div>
+      <div class="modal-body">
+        <p class="hint" style="margin-top:0;">Pick one chocolate to reveal a love note 💌</p>
+        <div class="scene-grid" id="chocoGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wish modal -->
+  <div class="modal" id="wishModal" role="dialog" aria-modal="true" aria-labelledby="wishTitle">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="wishTitle">🫶 Make a Wish for Vinni 💛</h3>
+        <button class="xbtn" id="closeWish">✖</button>
+      </div>
+      <div class="modal-body">
+        <p class="hint" style="margin-top:0;">
+          Type a wish, then click “Add ✨”. Your wishes stay saved here.
+        </p>
+        <div class="row">
+          <input id="wishInput2" type="text" placeholder="Example: I wish to hold your hand forever 💞🤝" />
+          <button class="pill primary" id="addWishBtn2">Add ✨</button>
+        </div>
+        <div style="height:12px;"></div>
+        <ul class="list" id="wishList2"></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <canvas id="cardCanvas" width="1080" height="1350"></canvas>
+
+  <script>
+    /**
+     * Setup notes:
+     * - Put your song file next to this HTML and name it "song.mp3"
+     *   (or change AUDIO_SRC below).
+     */
+    const LOVER_NAME = "Vinni";
+    const AUDIO_SRC = "song.mp3";
+
+    const MEMORIES = [
+      "That time your smile made my whole day brighter 💛✨",
+      "Our sweetest talks that felt like warm chocolate 🍫💞",
+      "Every little moment with you feels like forever 😘💍"
+    ];
+
+    const CHOCOLATE_MESSAGES = [
+      "Vinni 💛, you’re my favorite addiction 🍫😚",
+      "One bite, one kiss… repeat forever 😘🍫💞",
+      "You’re the sunshine in my yellow world 🌞💛",
+      "I’d choose you over all chocolates… (almost) 😋💞",
+      "You + me = sweetest story ever 📖💘",
+      "If love had a flavor, it would be you 🍫💛",
+      "Hug coupon: redeem anytime 🤗💛",
+      "Kiss coupon: unlimited 😘♾️"
+    ];
+
+    const toastEl = document.getElementById("toast");
+    const bgm = document.getElementById("bgm");
+    const playBtn = document.getElementById("playBtn");
+    const playIcon = document.getElementById("playIcon");
+    const playText = document.getElementById("playText");
+    const vol = document.getElementById("vol");
+    const muteBtn = document.getElementById("muteBtn");
+
+    const loveRainBtn = document.getElementById("loveRainBtn");
+    const confettiBtn = document.getElementById("confettiBtn");
+    const surpriseBtn = document.getElementById("surpriseBtn");
+    const shareBtn = document.getElementById("shareBtn");
+    const downloadCardBtn = document.getElementById("downloadCardBtn");
+
+    const meter = document.getElementById("meter");
+    const meterOut = document.getElementById("meterOut");
+
+    const nameTop = document.getElementById("nameTop");
+    const typeText = document.getElementById("typeText");
+
+    const loveLevel = document.getElementById("loveLevel");
+    const chocoCount = document.getElementById("chocoCount");
+    const countdown = document.getElementById("countdown");
+
+    const m1 = document.getElementById("m1");
+    const m2 = document.getElementById("m2");
+    const m3 = document.getElementById("m3");
+
+    const wishInput = document.getElementById("wishInput");
+    const addWishBtn = document.getElementById("addWishBtn");
+    const wishList = document.getElementById("wishList");
+
+    const wishModal = document.getElementById("wishModal");
+    const wishOpenBtn = document.getElementById("wishOpenBtn");
+    const closeWish = document.getElementById("closeWish");
+    const wishInput2 = document.getElementById("wishInput2");
+    const addWishBtn2 = document.getElementById("addWishBtn2");
+    const wishList2 = document.getElementById("wishList2");
+
+    const chocoModal = document.getElementById("chocoModal");
+    const openChocoModal = document.getElementById("openChocoModal");
+    const closeChoco = document.getElementById("closeChoco");
+    const chocoGrid = document.getElementById("chocoGrid");
+
+    const floatLayer = document.getElementById("floatLayer");
+
+    function showToast(msg){
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      window.clearTimeout(showToast._t);
+      showToast._t = window.setTimeout(() => toastEl.classList.remove("show"), 2600);
+    }
+
+    function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+
+    function safeInitAudio(){
+      const source = bgm.querySelector("source");
+      if (source && source.getAttribute("src") !== AUDIO_SRC){
+        source.setAttribute("src", AUDIO_SRC);
+        bgm.load();
+      }
+      bgm.volume = Number(vol.value);
+    }
+
+    async function togglePlay(){
+      safeInitAudio();
+      if (bgm.paused){
+        try{
+          await bgm.play();
+          playIcon.textContent = "⏸️";
+          playText.textContent = "Pause Song";
+          showToast("Playing your love song 🎶💛");
+        }catch{
+          showToast("Tap once anywhere, then try Play 🎶 (browser rule)");
+        }
+      }else{
+        bgm.pause();
+        playIcon.textContent = "▶️";
+        playText.textContent = "Play Song";
+        showToast("Paused 💛");
+      }
+    }
+
+    function setMute(){
+      bgm.muted = !bgm.muted;
+      muteBtn.textContent = bgm.muted ? "🙊" : "🙈";
+      showToast(bgm.muted ? "Muted 🙊" : "Unmuted 🙈");
+    }
+
+    function makeFloatingHearts(count = 18){
+      for (let i=0;i<count;i++){
+        const el = document.createElement("div");
+        el.className = "float";
+        el.textContent = Math.random() < 0.6 ? "💛" : (Math.random() < 0.5 ? "💖" : "💘");
+        const size = Math.floor(16 + Math.random()*28);
+        el.style.fontSize = size + "px";
+        el.style.left = Math.floor(Math.random()*100) + "vw";
+        el.style.bottom = (-10 - Math.random()*30) + "vh";
+        el.style.setProperty("--sx", (Math.random()*40 - 20) + "px");
+        el.style.setProperty("--ex", (Math.random()*90 - 45) + "px");
+        el.style.setProperty("--r", (Math.random()*50 - 25) + "deg");
+        el.style.animationDuration = (8 + Math.random()*10) + "s";
+        floatLayer.appendChild(el);
+        window.setTimeout(() => el.remove(), 19000);
+      }
+    }
+
+    function burstConfetti(){
+      // Simple heart confetti burst using DOM
+      const burst = 80;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 3;
+
+      for (let i=0;i<burst;i++){
+        const el = document.createElement("div");
+        el.style.position = "fixed";
+        el.style.left = centerX + "px";
+        el.style.top = centerY + "px";
+        el.style.zIndex = 300;
+        el.style.pointerEvents = "none";
+        el.style.fontSize = (12 + Math.random()*22) + "px";
+        el.textContent = Math.random() < 0.5 ? "💛" : (Math.random() < 0.5 ? "💖" : "✨");
+        document.body.appendChild(el);
+
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 80 + Math.random()*260;
+        const dx = Math.cos(angle) * dist;
+        const dy = Math.sin(angle) * dist;
+
+        const rot = (Math.random()*480 - 240);
+        const dur = 700 + Math.random()*900;
+
+        el.animate([
+          { transform:`translate(0,0) rotate(0deg)`, opacity:1 },
+          { transform:`translate(${dx}px, ${dy}px) rotate(${rot}deg)`, opacity:0 }
+        ], { duration: dur, easing:"cubic-bezier(.12,.74,.22,1)", fill:"forwards" });
+
+        window.setTimeout(() => el.remove(), dur + 50);
+      }
+
+      showToast("Confetti for Vinni 💛💖✨");
+    }
+
+    function surprise(){
+      const msgs = [
+        `Vinni 💛 you’re my favorite feeling 😘`,
+        `Chocolate Day kisses: 1...2...∞ 😚🍫`,
+        `I love you more than yellow sunsets 💛🌇`,
+        `Your smile = my daily chocolate 🍫💞`,
+        `Forever yours, Vinni 💍💛`
+      ];
+      showToast(msgs[Math.floor(Math.random()*msgs.length)]);
+      burstConfetti();
+    }
+
+    function nextChocolateDayCountdown(){
+      // Chocolate Day: Feb 9 (commonly). Uses local time.
+      const now = new Date();
+      const year = now.getFullYear();
+      const targetThisYear = new Date(year, 1, 9, 0, 0, 0); // Feb=1
+      const target = now <= targetThisYear ? targetThisYear : new Date(year+1, 1, 9, 0, 0, 0);
+      const ms = target - now;
+
+      const totalSec = Math.max(0, Math.floor(ms/1000));
+      const d = Math.floor(totalSec / 86400);
+      const h = Math.floor((totalSec % 86400) / 3600);
+      const m = Math.floor((totalSec % 3600) / 60);
+      const s = totalSec % 60;
+
+      countdown.textContent = `${d}d ${h}h ${m}m ${s}s`;
+    }
+
+    function updateLoveDashboard(){
+      const m = Number(meter.value);
+      meterOut.value = `${m}%`;
+      meterOut.textContent = `${m}%`;
+      const lvl = m >= 95 ? "∞ / 10" : `${Math.ceil(m/10)} / 10`;
+      loveLevel.textContent = lvl;
+      const chocolates = clamp(Math.round(m/8), 1, 99);
+      chocoCount.textContent = `${chocolates} kisses-worth`;
+    }
+
+    function typewriter(lines){
+      let line = 0, idx = 0;
+      let current = "";
+      const speed = 30;
+
+      function tick(){
+        const text = lines[line];
+        current = text.slice(0, idx++);
+        typeText.textContent = current;
+
+        if (idx <= text.length){
+          setTimeout(tick, speed);
+          return;
+        }
+
+        setTimeout(() => {
+          // backspace a bit then next line
+          const back = () => {
+            if (idx > 0){
+              idx -= 2;
+              typeText.textContent = text.slice(0, Math.max(0, idx));
+              setTimeout(back, 18);
+            }else{
+              line = (line + 1) % lines.length;
+              idx = 0;
+              setTimeout(tick, 250);
+            }
+          };
+          back();
+        }, 1400);
+      }
+      tick();
+    }
+
+    const WISH_KEY = "vinni_wishes_v1";
+
+    function loadWishes(){
+      try{
+        const raw = localStorage.getItem(WISH_KEY);
+        return raw ? JSON.parse(raw) : [];
+      }catch{
+        return [];
+      }
+    }
+
+    function saveWishes(wishes){
+      localStorage.setItem(WISH_KEY, JSON.stringify(wishes));
+    }
+
+    function renderWishes(){
+      const wishes = loadWishes();
+      const renderInto = (ul) => {
+        ul.innerHTML = "";
+        wishes.slice().reverse().forEach((w, idxFromEnd) => {
+          const li = document.createElement("li");
+          const left = document.createElement("div");
+          const right = document.createElement("div");
+
+          const strong = document.createElement("strong");
+          strong.textContent = w.text;
+
+          const small = document.createElement("small");
+          small.textContent = new Date(w.ts).toLocaleString();
+
+          left.appendChild(strong);
+          left.appendChild(small);
+
+          const btn = document.createElement("button");
+          btn.textContent = "🗑️";
+          btn.title = "Delete";
+          btn.addEventListener("click", () => {
+            const wishes2 = loadWishes();
+            // idxFromEnd maps to original index
+            const originalIndex = wishes2.length - 1 - idxFromEnd;
+            wishes2.splice(originalIndex, 1);
+            saveWishes(wishes2);
+            renderWishes();
+            showToast("Wish removed 💛");
+          });
+
+          right.appendChild(btn);
+          li.appendChild(left);
+          li.appendChild(right);
+          ul.appendChild(li);
+        });
+
+        if (!wishes.length){
+          const li = document.createElement("li");
+          li.innerHTML = `<div><strong>No wishes yet 💛</strong><small>Add one for Vinni 🫶</small></div>`;
+          ul.appendChild(li);
+        }
+      };
+
+      renderInto(wishList);
+      renderInto(wishList2);
+    }
+
+    function addWish(text){
+      const t = (text || "").trim();
+      if (!t){
+        showToast("Write a wish first 💛");
+        return;
+      }
+      const wishes = loadWishes();
+      wishes.push({ text: t, ts: Date.now() });
+      saveWishes(wishes);
+      renderWishes();
+      showToast("Wish saved ✨💛");
+    }
+
+    function openModal(el){
+      el.classList.add("show");
+    }
+    function closeModal(el){
+      el.classList.remove("show");
+    }
+
+    function setupChocolateGrid(){
+      chocoGrid.innerHTML = "";
+      const count = 8;
+      for (let i=0;i<count;i++){
+        const tile = document.createElement("button");
+        tile.className = "tile";
+        tile.style.cursor = "pointer";
+        tile.style.textAlign = "left";
+        tile.innerHTML = `<h3>🍫 Chocolate #${i+1}</h3><p>Tap to unwrap 💌</p>`;
+        tile.addEventListener("click", () => {
+          const msg = CHOCOLATE_MESSAGES[Math.floor(Math.random()*CHOCOLATE_MESSAGES.length)];
+          showToast(msg);
+          burstConfetti();
+        });
+        chocoGrid.appendChild(tile);
+      }
+    }
+
+    async function sharePage(){
+      const text = `Happy Chocolate Day, ${LOVER_NAME} 💛🍫\nA sweet little love page made for you 💞`;
+      const url = window.location.href;
+
+      try{
+        if (navigator.share){
+          await navigator.share({ title: document.title, text, url });
+          showToast("Shared 💛");
+          return;
+        }
+      }catch{
+        // ignore
+      }
+
+      try{
+        await navigator.clipboard.writeText(`${text}\n${url}`);
+        showToast("Link copied 📋💛");
+      }catch{
+        showToast("Copy failed—your browser blocked it 💛");
+      }
+    }
+
+    function downloadLoveCard(){
+      const canvas = document.getElementById("cardCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Background
+      const grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      grd.addColorStop(0, "#FFD400");
+      grd.addColorStop(0.6, "#FFEE7A");
+      grd.addColorStop(1, "#FFFFFF");
+      ctx.fillStyle = grd;
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+
+      // Top glow
+      ctx.fillStyle = "rgba(255,255,255,0.75)";
+      ctx.beginPath();
+      ctx.ellipse(canvas.width*0.25, canvas.height*0.18, 420, 260, 0, 0, Math.PI*2);
+      ctx.fill();
+
+      // Card
+      const pad = 80;
+      const x = pad, y = 220, w = canvas.width - pad*2, h = 880;
+      roundRect(ctx, x, y, w, h, 46);
+      ctx.fillStyle = "rgba(255,255,255,0.78)";
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "rgba(0,0,0,0.12)";
+      ctx.stroke();
+
+      // Title
+      ctx.fillStyle = "#2b2400";
+      ctx.font = "900 64px system-ui, -apple-system, Segoe UI, Roboto";
+      ctx.fillText("Happy Chocolate Day", x+60, y+120);
+
+      // Name
+      ctx.font = "950 86px system-ui, -apple-system, Segoe UI, Roboto";
+      ctx.fillText(LOVER_NAME + " 💛🍫", x+60, y+220);
+
+      // Message
+      ctx.font = "800 44px system-ui, -apple-system, Segoe UI, Roboto";
+      wrapText(ctx, "You are my sweetest forever 💞\nLove you loads 😘💛", x+60, y+320, w-120, 56);
+
+      // Big heart sticker
+      const hx = x + w - 250, hy = y + h - 270;
+      ctx.save();
+      ctx.translate(hx, hy);
+      ctx.rotate(0.18);
+      roundRect(ctx, -160, -160, 320, 320, 70);
+      ctx.fillStyle = "#ff2d55";
+      ctx.globalAlpha = 0.92;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.font = "900 140px system-ui, -apple-system, Segoe UI, Roboto";
+      ctx.fillStyle = "#fff";
+      ctx.fillText("💘", -82, 55);
+      ctx.restore();
+
+      // Footer
+      ctx.font = "850 34px system-ui, -apple-system, Segoe UI, Roboto";
+      ctx.fillStyle = "rgba(43,36,0,0.85)";
+      ctx.fillText("Made with love emojis 💞✨ and yellow vibes 💛", x+60, y+h-60);
+
+      const a = document.createElement("a");
+      a.download = `Chocolate-Day-${LOVER_NAME}.png`;
+      a.href = canvas.toDataURL("image/png");
+      a.click();
+
+      showToast("Love card downloaded 🖼️💛");
+    }
+
+    function roundRect(ctx, x, y, w, h, r){
+      const rr = Math.min(r, w/2, h/2);
+      ctx.beginPath();
+      ctx.moveTo(x+rr, y);
+      ctx.arcTo(x+w, y, x+w, y+h, rr);
+      ctx.arcTo(x+w, y+h, x, y+h, rr);
+      ctx.arcTo(x, y+h, x, y, rr);
+      ctx.arcTo(x, y, x+w, y, rr);
+      ctx.closePath();
+    }
+
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight){
+      const lines = String(text).split("\n");
+      let yy = y;
+
+      for (const ln of lines){
+        const words = ln.split(" ");
+        let line = "";
+        for (const word of words){
+          const test = line ? line + " " + word : word;
+          if (ctx.measureText(test).width > maxWidth && line){
+            ctx.fillText(line, x, yy);
+            line = word;
+            yy += lineHeight;
+          }else{
+            line = test;
+          }
+        }
+        ctx.fillText(line, x, yy);
+        yy += lineHeight;
+      }
+    }
+
+    function init(){
+      nameTop.textContent = LOVER_NAME;
+      m1.textContent = MEMORIES[0];
+      m2.textContent = MEMORIES[1];
+      m3.textContent = MEMORIES[2];
+
+      safeInitAudio();
+
+      // Browser autoplay rule workaround: arm play on first interaction
+      const arm = () => {
+        document.removeEventListener("pointerdown", arm);
+        // no forced play; just ready the element
+        bgm.load();
+      };
+      document.addEventListener("pointerdown", arm, { once:true });
+
+      // Typing lines
+      typewriter([
+        `Happy Chocolate Day, ${LOVER_NAME} 💛🍫`,
+        `You’re my sunshine and my sweet chocolate 🌞🍫`,
+        `I love you endlessly 😘💞`,
+        `Forever yours 💍💛`
+      ]);
+
+      // Floating hearts background
+      makeFloatingHearts(22);
+      setInterval(() => makeFloatingHearts(8), 2600);
+
+      // Dashboard / meter
+      meter.addEventListener("input", updateLoveDashboard);
+      updateLoveDashboard();
+
+      // Countdown
+      nextChocolateDayCountdown();
+      setInterval(nextChocolateDayCountdown, 1000);
+
+      // Buttons
+      playBtn.addEventListener("click", togglePlay);
+      vol.addEventListener("input", () => { bgm.volume = Number(vol.value); bgm.muted = false; muteBtn.textContent = "🙈"; });
+      muteBtn.addEventListener("click", setMute);
+
+      loveRainBtn.addEventListener("click", () => { makeFloatingHearts(40); showToast("Love shower activated 💛💛💛"); });
+      confettiBtn.addEventListener("click", burstConfetti);
+      surpriseBtn.addEventListener("click", surprise);
+
+      shareBtn.addEventListener("click", sharePage);
+      downloadCardBtn.addEventListener("click", downloadLoveCard);
+
+      // Chips say something
+      document.querySelectorAll(".chip").forEach(chip => {
+        chip.addEventListener("click", () => showToast(chip.dataset.say));
+      });
+
+      // Wishes
+      renderWishes();
+      addWishBtn.addEventListener("click", () => { addWish(wishInput.value); wishInput.value=""; });
+      wishInput.addEventListener("keydown", (e) => { if (e.key === "Enter"){ addWish(wishInput.value); wishInput.value=""; }});
+
+      // Wish modal
+      wishOpenBtn.addEventListener("click", () => openModal(wishModal));
+      closeWish.addEventListener("click", () => closeModal(wishModal));
+      wishModal.addEventListener("click", (e) => { if (e.target === wishModal) closeModal(wishModal); });
+
+      addWishBtn2.addEventListener("click", () => { addWish(wishInput2.value); wishInput2.value=""; });
+      wishInput2.addEventListener("keydown", (e) => { if (e.key === "Enter"){ addWish(wishInput2.value); wishInput2.value=""; }});
+
+      // Chocolate modal
+      setupChocolateGrid();
+      openChocoModal.addEventListener("click", () => openModal(chocoModal));
+      closeChoco.addEventListener("click", () => closeModal(chocoModal));
+      chocoModal.addEventListener("click", (e) => { if (e.target === chocoModal) closeModal(chocoModal); });
+
+      // Cute random updates
+      setInterval(() => {
+        const moods = ["Golden & Cozy 💛", "Sweet & Sparkly ✨", "Kiss-ready 😘", "Hug-hungry 🤗", "Chocolatey 🍫"];
+        document.getElementById("mood").textContent = moods[Math.floor(Math.random()*moods.length)];
+      }, 6500);
+
+      showToast(`Welcome, ${LOVER_NAME} 💛🍫`);
+    }
+
+    init();
+  </script>
+</body>
+</html>
